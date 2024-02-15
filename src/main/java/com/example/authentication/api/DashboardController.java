@@ -26,7 +26,6 @@ public class DashboardController {
     @GetMapping("/balance")
     public double getBalanceGlobale(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("Name is " + authentication.getName());
         Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
 
         return entreprise.getCartes().stream().mapToDouble(Carte::getSolde).sum();
@@ -35,7 +34,7 @@ public class DashboardController {
     @GetMapping("/transactions")
     public List<Operation> getListeTransaction(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Entreprise entreprise =  entrepriseRepository.findByUsername(authentication.getName());
+        Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
         List<Operation> transactions = new ArrayList<>();
         for(Carte carte : entreprise.getCartes()){
             for(Operation transaction : carte.getOperations()){
@@ -49,7 +48,7 @@ public class DashboardController {
     @GetMapping("/cartes")
     public List<Carte> getListeCartes() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Entreprise entreprise =  entrepriseRepository.findByUsername(authentication.getName());
+        Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
         return entreprise.getCartes();
     }
 
