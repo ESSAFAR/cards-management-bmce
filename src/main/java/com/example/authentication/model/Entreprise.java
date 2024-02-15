@@ -25,6 +25,7 @@ public class Entreprise {
     @Column(unique = true)
     private String nom;
     private String username;
+    private Double balance;
     @OneToMany(mappedBy = "entreprise")
     private List<Carte> cartes=new ArrayList<>();
     @OneToMany(mappedBy = "entreprise", fetch = FetchType.EAGER)

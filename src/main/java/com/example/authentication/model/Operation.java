@@ -21,8 +21,13 @@ public class Operation {
     private Long id;
     private TypeOperation typeOperation;
     private String description;
-    private float montant;
+    private double montant;
     private Date date;
 
-
+    public Operation(TypeOperation typeOperation, String description, double montant, Date date) {
+        this.typeOperation = typeOperation;
+        this.description = description;
+        this.montant = montant;
+        this.date = date;
+    }
 }

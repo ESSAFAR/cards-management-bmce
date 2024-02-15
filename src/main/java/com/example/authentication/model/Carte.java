@@ -12,6 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -33,7 +34,7 @@ public class Carte {
     private Entreprise entreprise;
 
     @OneToMany
-    private Collection<Operation> operations;
+    private Collection<Operation> operations = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private Status status;
 
