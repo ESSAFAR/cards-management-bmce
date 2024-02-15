@@ -45,11 +45,18 @@ public class DashboardController {
         return transactions;
     }
 
-    @GetMapping("/cartes")
+    @GetMapping("/listcartes")
     public List<Carte> getListeCartes() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
-        return entreprise.getCartes();
+//        System.out.println("1");
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        System.out.println("12");
+//        Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
+//        System.out.println("13");
+        Entreprise entreprise = entrepriseRepository.findByNom("user1");
+
+        System.out.println("hehe : " +  entreprise.getCartes());
+//        return entreprise.getCartes();
+        return new ArrayList<>();
     }
 
 }

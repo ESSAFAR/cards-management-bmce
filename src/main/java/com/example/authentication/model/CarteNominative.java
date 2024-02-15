@@ -20,4 +20,12 @@ public class CarteNominative extends Carte{
     @ManyToOne
     private Employe employe;
 
+
+    @Override
+    public String toString() {
+        return "CarteNominative{" +
+                super.toString() +
+                "employe=" + employe.getNom() +
+                '}';
+    }
 }

@@ -26,7 +26,6 @@ public class Entreprise {
     private String nom;
     private String username;
     @OneToMany(mappedBy = "entreprise")
-    @JsonBackReference
     private List<Carte> cartes=new ArrayList<>();
     @OneToMany(mappedBy = "entreprise", fetch = FetchType.EAGER)
     @JsonBackReference

@@ -2,6 +2,7 @@ package com.example.authentication.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -27,7 +28,7 @@ public class Carte {
     private float solde;
     @ManyToOne
     @JsonManagedReference
-    @JsonIgnore
+    @JsonBackReference
     private Entreprise entreprise;
 
     @OneToMany
@@ -37,5 +38,15 @@ public class Carte {
 
     public void addOperation(Operation operation) {
         this.getOperations().add(operation);
+    }
+
+    @Override
+    public String toString() {
+        return "Carte{" +
+                "id=" + id +
+                ", solde=" + solde +
+                ", operations=" + operations +
+                ", status=" + status +
+                '}';
     }
 }
