@@ -29,21 +29,21 @@ public class AuthenticationApplication {
     @Bean
     CommandLineRunner run(UserService userService){
         return args -> {
-//            userService.saveRole("USER");
-//            userService.saveRole("ADMIN");
-//            userService.saveUser("user1","1234");
-//            userService.saveUser("user2","1234");
-//            userService.addRoletoUser("user1","USER");
-//            userService.addRoletoUser("user2","ADMIN");
-//            Entreprise entreprise=new Entreprise("sarl","user1");
-//            Employe employe=new Employe("adnane","f669214","0639799920",Employe.ddn("1990-01-15"), Sex.HOMME,entreprise);
-//            Employe employe2=new Employe("adnane2","f6692142","06397999202",Employe.ddn("1990-01-15"), Sex.HOMME,entreprise);
-//            CarteNominative carteNominative=new CarteNominative(entreprise,employe);
-//            entreprise=entrepriseRepository.save(entreprise);
-//            employeRepository.save(employe);
-//            employeRepository.save(employe2);
-//            System.out.println(employeRepository.findByEntreprise(entreprise));
-//            carteRepository.save(carteNominative);
+            userService.saveRole("USER");
+            userService.saveRole("ADMIN");
+            userService.saveUser("user1","1234");
+            userService.saveUser("user2","1234");
+            userService.addRoletoUser("user1","USER");
+            userService.addRoletoUser("user2","ADMIN");
+            Entreprise entreprise=Entreprise.builder().nom("user1").username("sarl").build();
+            Employe employe=new Employe("adnane","f669214","0639799920",Employe.ddn("1990-01-15"), Sex.HOMME,entreprise);
+            Employe employe2=new Employe("adnane2","f6692142","06397999202",Employe.ddn("1990-01-15"), Sex.HOMME,entreprise);
+            CarteNominative carteNominative= CarteNominative.builder().employe(employe).build();
+            carteNominative.setEntreprise(entreprise);
+            entreprise=entrepriseRepository.save(entreprise);
+            employeRepository.save(employe);
+            employeRepository.save(employe2);
+            carteRepository.save(carteNominative);
 
 
         };

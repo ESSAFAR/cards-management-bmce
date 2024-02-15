@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/Dashboard")
+@RequestMapping("/dashboard")
 public class DashboardController {
     public final EntrepriseRepository entrepriseRepository;
 
@@ -26,7 +26,8 @@ public class DashboardController {
     @GetMapping("/balance")
     public double getBalanceGlobale(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Entreprise entreprise =  entrepriseRepository.findByUsername(authentication.getName());
+        System.out.println("Name is " + authentication.getName());
+        Entreprise entreprise =  entrepriseRepository.findByNom(authentication.getName());
 
         return entreprise.getCartes().stream().mapToDouble(Carte::getSolde).sum();
     }

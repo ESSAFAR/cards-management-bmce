@@ -22,7 +22,7 @@ import java.util.Objects;
 public class Employe {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String nom;
     private String prenom;
     private String tele;
