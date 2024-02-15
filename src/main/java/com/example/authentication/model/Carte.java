@@ -16,12 +16,11 @@ import java.util.Objects;
 
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length = 4)
-public abstract class Carte {
+public class Carte {
     @Id
     @GeneratedValue
     private Long id;
@@ -36,4 +35,7 @@ public abstract class Carte {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    public void addOperation(Operation operation) {
+        this.getOperations().add(operation);
+    }
 }
